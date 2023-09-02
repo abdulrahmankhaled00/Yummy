@@ -1,0 +1,91 @@
+.nav-Img{
+    width: 50px;
+
+}
+li{
+    padding: .5rem 0px;
+}
+
+.meal-img{
+    overflow:hidden ;
+    border-radius: 2%;
+    
+    position: relative;
+}
+.lyer-Img{
+   
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.66);
+    position: absolute;
+    top: 200%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: .5s top;
+}
+.lyer-Img h3{
+    padding: 10px;
+}
+.meal-img:hover .lyer-Img{
+    top: 0;
+}
+
+#searchName::placeholder,#searchLetter::placeholder{
+    color: rgba(255, 255, 255, 0.412)
+}
+.invalid-feedback {
+    
+    padding: .9375rem;
+
+    text-align: center;
+    color: #842029;
+    background-color: #f8d7da;
+    font-size: 16px;
+    overflow:hidden ;
+    border-radius: calc(.3125rem) ;
+    
+    position: relative;
+}
+.form-control.is-invalid{
+    background-image: none;
+}
+nav i{
+cursor: pointer ;
+}
+nav{
+    position: relative;
+    top: 0;
+
+}
+.nav-link{
+    position: relative;
+}
+ul{
+    overflow: hidden;
+}
+nav li{
+
+    position: relative;
+    top: 0;
+    cursor: pointer;
+}
+
+p{
+
+    overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+#searchName,#searchLetter{
+    position: relative;
+    z-index: 2;
+}
+.loading-screen-frist{
+    z-index: 90;
+}
+.meal,.categorymeal{
+    cursor: pointer;
+}
