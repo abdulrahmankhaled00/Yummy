@@ -48,7 +48,6 @@ export class Foods{
             document.getElementById('main-Inner').innerHTML=''
             this.searchNme.addEventListener('keyup',()=>this.searchByName(this.searchNme.value));
             this.searchLetter.addEventListener('keyup',()=>this.searchByLetter(this.searchLetter.value))
-
         })
         $('li[data-category="contact-Us"]').click(()=>{
             this.closeNav()
@@ -92,17 +91,17 @@ export class Foods{
 
     }
 
-    async getMeals(cat){
+    async getMeals(cat){ 
         $('.loading-screen-frist').fadeIn().css('z-index','999');
         const api= await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${cat}`);
         const response= await api.json()
-        console.log(response.meals)
         this.ui.displayRandome20Meal(response.meals)  
         this.startEvent('')  
 
         $('.loading-screen-frist').fadeOut(function(){
             $('.loading-screen-frist').remove() 
         });
+        this.closeNav()
 
     }
     async getCatMeal(cat){
@@ -111,7 +110,6 @@ export class Foods{
 
         const api= await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${cat}`);
         const response= await api.json()
-        console.log(response.meals)
         this.ui.displayRandome20Meal(response.meals)  
         this.startEvent()  
         $('.loading-screen').fadeOut(function(){
@@ -125,7 +123,6 @@ export class Foods{
         $('.loading-screen').addClass('d-flex').fadeIn()
         const api= await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${cat}`);
         const response= await api.json()
-        console.log(response.meals)
         this.ui.displayRandome20Meal(response.meals)  
         this.startEvent()  
         $('.loading-screen').fadeOut(function(){
@@ -138,7 +135,6 @@ export class Foods{
         $('.loading-screen').addClass('d-flex').fadeIn()
         const api= await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${cat}`);
         const response= await api.json()
-        console.log(response.meals)
         this.ui.displayRandome20Meal(response.meals)  
         this.startEvent()  
         $('.loading-screen').fadeOut(function(){
@@ -196,7 +192,9 @@ export class Foods{
     }
     async searchByName(mealName){
         
-        $('.loading-screen').addClass('d-flex').fadeIn()
+        if(!document.querySelector('.loading-screen').classList.contains('d-flex')){
+            $('.loading-screen').addClass('d-flex').fadeIn()
+        }
         if(mealName!=''){
         const api= await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`);
         const response= await api.json()
@@ -215,8 +213,10 @@ export class Foods{
     }
     async searchByLetter(Letter){
         
-        $('.loading-screen').addClass('d-flex').fadeIn()
-        if(mealName!=''){
+        if(!document.querySelector('.loading-screen').classList.contains('d-flex')){
+            $('.loading-screen').addClass('d-flex').fadeIn()
+        }
+        if(this.Letter!=''){
         const api= await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${Letter}`);
         const response= await api.json()
         if(response.meals!=null){
@@ -285,7 +285,6 @@ export class Foods{
     validateAgeInput(age){
         this.ageInupt.classList.add('is-invalid')
 
-        console.log(age)    
         if(age.length){
             this.ageInupt.classList.remove('is-invalid')
         }else{
@@ -341,11 +340,9 @@ export class Foods{
     !this.passwordInupt.value||
     !this.RepasswordInupt.value){
         onOrOff=false
-        console.log(onOrOff)
         break
     }   
    }
-   console.log(onOrOff)
    if(onOrOff){
     document.querySelector('button').removeAttribute('disabled')
    }else{
@@ -379,16 +376,12 @@ export class Foods{
         }) 
     }
     showDetails(id){
-        $('.loading-screen').addClass('d-flex').fadeIn()
         this.closeNav()
        const details= new Details(id);
-       $('.loading-screen').fadeOut(function(){
-        $('.loading-screen').removeClass('d-flex')
-    })
+
     }
     closeNav(){
         let navleft =$('nav').css("left")
-        console.log(navleft)
         if(navleft=="0px"){
             this.navMainBtn.click()
         }

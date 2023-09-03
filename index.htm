@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="bg-black text-white ">
+    <div class="loading-screen position-absolute z-1  bg-black  top-0 start-0 end-0 bottom-0 justify-content-center align-items-center" style="display: none; ">
+        <i class="fa fa-spinner fa-spin fa-5x"></i>
+    </div>
     <div class="loading-screen-frist  position-fixed d-flex bg-black top-0 start-0 end-0 bottom-0 justify-content-center align-items-center" >
         <i class="fa fa-spinner fa-spin fa-5x"></i>
     </div>
@@ -72,9 +75,7 @@ Reserved.
           
     </section>
     <section id="main" class="d-flex  container py-5 justify-content-center align-content-center  " >
-        <div class="loading-screen position-absolute z-5  bg-black  top-0 start-0 end-0 bottom-0 justify-content-center align-items-center" style="display: none; ">
-            <i class="fa fa-spinner fa-spin fa-5x"></i>
-        </div>
+
            <div class="row  g-4 pointer-event  w-100" id="main-Inner">
             <!-- <div  class=" col-md-3 meal " data-meal="hee">
                 <div class="meal-img">
@@ -106,13 +107,13 @@ Reserved.
 
     </section>
 
-    <section id="Details" class="d-none">
+    <section id="Details" class="d-none  ">
 
     </section>
     
     <section id="ContactUs" class=" d-flex  align-items-center vh-100 d-none">
-        <div class="container   px-5 w-75  ">
-            <div class="row  w-100 px-5 g-3 ">
+        <div class="container    w-75  ">
+            <div class="row  w-100  g-3 ">
                 <div class="col-md-6 p">
                     <input id="nameInupt" type="text" class=" form-control bg-white text-black " placeholder="Enter Your Name"  aria-describedby="basic-addon1">
                     <div class="invalid-feedback  ">

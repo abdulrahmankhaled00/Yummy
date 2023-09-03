@@ -21,12 +21,14 @@ export class Ui{
         let container=``
          for(let i=0;i<resp.length;i++){
              if(i==20)break
+             let descrip=this.spliter(resp[i].strCategoryDescription)
+
              container+=`
                  <div class=" col-md-3 categorymeal pointer-event  " data-categorymeal="${resp[i].strCategory}">
                  <div class="meal-img">
                       <div class="lyer-Img text-center flex-column justify-content-center">
                      <h3 class="text-black ">${resp[i].strCategory}</h3>
-                     <p class="d-block text-black">${resp[i].strCategoryDescription}</p>
+                     <p class="d-block text-black">${descrip}</p>
                      
                  </div>
                  <img src="${resp[i].strCategoryThumb}" alt="" class="w-100   ">
@@ -47,26 +49,28 @@ export class Ui{
             <h3>${resp[i].strArea}</h3>
             </div>
             </div>
-       
         `
     }
     document.getElementById('main-Inner').innerHTML=container
     $('#main').removeClass('d-none')
     }
     displayIngredients(resp){
+
         let container=``
         for(let i=0;i<resp.length;i++){
-            if(i==20)break
+            if(i==20)break 
+           let descrip=this.spliter(resp[i].strDescription)
+
             container+=`
             <div class=" col-md-3 categorymeal  " data-categorymeal="${resp[i].strIngredient}">
                 <div class="text-center   ">
                     <i class="fa-solid fa-drumstick-bite fa-4x"></i>
                     <h3>${resp[i].strIngredient}</h3>
-                    <p>${resp[i].strDescription}</p>
+                    <p>${descrip}</p>
                 </div>
                 </div>
         `
-    }
+    }    
     document.getElementById('main-Inner').innerHTML=container
     $('#main').removeClass('d-none')
     }
@@ -112,7 +116,6 @@ export class Ui{
        const recpIngredient= this.backCurntRecpise(res,9,29)
        const recpamount= this.backCurntRecpise(res,30,49)
        const resultArray = recpamount.map((str, index) => str +' '+recpIngredient[index]);
-       console.log(resultArray);
 
 
 
@@ -142,7 +145,7 @@ export class Ui{
 
         let container =`
         <div class="container  vh-100 py-5 px-0 ">
-        <div class="row justify-content-center align-items-center g-4 ">
+        <div class="row justify-content-center align-items-center g-4 m-0">
             <div class="col-md-4 align-self-start pt-2  ">
                 <footer>
                     <img src="${res.strMealThumb}" alt="" class="w-100 rounded-3">
@@ -183,5 +186,16 @@ export class Ui{
             onlyRecp.push(currntrecp[i])
         }
         return onlyRecp
+    }
+    spliter(strDescription){
+        const words = strDescription.split(/\s+/);
+
+        // Take the first 20 words
+        const first20Words = words.slice(0, 20);
+    
+        // Join the selected words back into a single string
+        const result = first20Words.join(' ');
+    
+        return result;
     }
 }

@@ -71,13 +71,12 @@ nav li{
     cursor: pointer;
 }
 
-p{
-
+#Details .p{
     overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
+ }
 
 #searchName,#searchLetter{
     position: relative;
