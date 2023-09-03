@@ -1,5 +1,5 @@
 export class Ui{
-    displayRandome20Meal(resp){
+    displayMeals(resp){
        let container=``
         for(let i=0;i<resp.length;i++){
             if(i==20)break
@@ -24,7 +24,7 @@ export class Ui{
              let descrip=this.spliter(resp[i].strCategoryDescription)
 
              container+=`
-                 <div class=" col-md-3 categorymeal pointer-event  " data-categorymeal="${resp[i].strCategory}">
+                 <div class=" col-md-3 categorymeal pointer-event  " data-catvalue="${resp[i].strCategory}">
                  <div class="meal-img">
                       <div class="lyer-Img text-center flex-column justify-content-center">
                      <h3 class="text-black ">${resp[i].strCategory}</h3>
@@ -43,7 +43,7 @@ export class Ui{
         let container=``
         for(let i=0;i<resp.length;i++){
             container+=`
-            <div class=" col-md-3 categorymeal  " data-categorymeal="${resp[i].strArea}">
+            <div class=" col-md-3 categorymeal  " data-catvalue="${resp[i].strArea}">
             <div class="text-center   ">
             <i class="fa-solid fa-house-laptop fa-4x"></i>
             <h3>${resp[i].strArea}</h3>
@@ -62,7 +62,7 @@ export class Ui{
            let descrip=this.spliter(resp[i].strDescription)
 
             container+=`
-            <div class=" col-md-3 categorymeal  " data-categorymeal="${resp[i].strIngredient}">
+            <div class=" col-md-3 categorymeal  " data-catvalue="${resp[i].strIngredient}">
                 <div class="text-center   ">
                     <i class="fa-solid fa-drumstick-bite fa-4x"></i>
                     <h3>${resp[i].strIngredient}</h3>
@@ -95,24 +95,6 @@ export class Ui{
     }
    
     displayDetails(res){
-        // console.log(
-        //     res
-        // )
-        // console.log(res)
-        // let resArr= Object.entries(res)
-        // console.log(typeof(resArr));
-        // let recpiceWord=[];
-        // for(let i of resArr){
-        //     console.log(i[1])
-        //     recpiceWord.push(i[1])
-        // }
-        // let currntrecp=recpiceWord.slice(9,29)
-        // let onlyRecp=[]
-        // for(let i=0;i<currntrecp.length;i++){
-        //     if(currntrecp[i]=='')break
-        //     onlyRecp.push(currntrecp[i])
-        // }
-        // console.log(onlyRecp)
        const recpIngredient= this.backCurntRecpise(res,9,29)
        const recpamount= this.backCurntRecpise(res,30,49)
        const resultArray = recpamount.map((str, index) => str +' '+recpIngredient[index]);
@@ -144,8 +126,8 @@ export class Ui{
 
 
         let container =`
-        <div class="container  vh-100 py-5 px-0 ">
-        <div class="row justify-content-center align-items-center g-4 m-0">
+        <div class="container  vh-100  px-0 ">
+        <div class="row justify-content-center align-items-center py-5 g-4 m-0">
             <div class="col-md-4 align-self-start pt-2  ">
                 <footer>
                     <img src="${res.strMealThumb}" alt="" class="w-100 rounded-3">
