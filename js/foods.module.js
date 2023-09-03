@@ -195,7 +195,7 @@ export class Foods{
         if(!document.querySelector('.loading-screen').classList.contains('d-flex')){
             $('.loading-screen').addClass('d-flex').fadeIn()
         }
-        if(mealName!=''){
+        if(mealName!=null){
         const api= await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`);
         const response= await api.json()
         if(response.meals!=null){
@@ -212,11 +212,14 @@ export class Foods{
         })
     }
     async searchByLetter(Letter){
-        
+        if(Letter==''){
+            Letter='a'
+        }
         if(!document.querySelector('.loading-screen').classList.contains('d-flex')){
             $('.loading-screen').addClass('d-flex').fadeIn()
         }
-        if(this.Letter!=''){
+        if(Letter!=null){
+            
         const api= await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${Letter}`);
         const response= await api.json()
         if(response.meals!=null){
